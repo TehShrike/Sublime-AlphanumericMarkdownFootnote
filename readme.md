@@ -1,4 +1,4 @@
-# BetterMarkdownFootnotes
+# AlphanumericMarkdownFootnote
 
 A Sublime Text 3 plugin.
 
@@ -11,6 +11,8 @@ Similar to [MarkdownFootnotes](https://github.com/classicist/MarkdownFootnotes),
 It differs from MarkdownFootnotes by:
 
 - handling non-integer footnote ids
+- ignoring your currently selected text when creating the footnote
+- not bothering to validate all of your footnotes
 - when footnote ids end with a number, use that prefix for the new footnote, but adjust all the numbers to line up
 - less code
 - tests

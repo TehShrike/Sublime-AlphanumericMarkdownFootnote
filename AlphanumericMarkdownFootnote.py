@@ -3,7 +3,7 @@ import sublime_plugin
 
 from .FootnoteFunctions import insert_footnote
 
-class InsertBetterMarkdownFootnoteCommand(sublime_plugin.TextCommand):
+class InsertAlphanumericMarkdownFootnoteCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		whole_view_region = sublime.Region(0, self.view.size())
 		buffer_contents =  self.view.substr(whole_view_region)
