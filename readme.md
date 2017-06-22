@@ -1,4 +1,4 @@
-# AlphanumericMarkdownFootnote
+# Alphanumeric Markdown Footnote
 
 A Sublime Text 3 plugin.
 
