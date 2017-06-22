@@ -1,0 +1,5 @@
+[
+    {
+        "keys": ["ctrl+f"], "command": "insert_better_markdown_footnote"
+    }
+]
