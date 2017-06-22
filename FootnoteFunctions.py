@@ -26,7 +26,7 @@ def insert_footnote(string, position):
 		+ new_footnote_block \
 		+ increment_footnotes_gte(end, new_footnote_number)
 
-	if footnote_reference['reference_number_after_incrementing'] == None:
+	if footnote_reference['reference_number_after_incrementing'] is None:
 		new_footnote_contents_position = len(body_without_new_footnote_contents)
 	else:
 		reference_footnote_id = footnote_reference['prefix'] + str(footnote_reference['reference_number_after_incrementing'])
@@ -61,14 +61,14 @@ def newlines_to_put_before_position(string, position):
 def find_reference_footnote(first_half, last_half):
 	previous_footnote_deetz = get_last_footnote(first_half)
 
-	if previous_footnote_deetz != None:
+	if previous_footnote_deetz is not None:
 		previous_footnote_deetz['new_number'] = previous_footnote_deetz['number'] + 1
 		previous_footnote_deetz['reference_number_after_incrementing'] = previous_footnote_deetz['number']
 		return previous_footnote_deetz
 
 	next_footnote_deetz = get_first_footnote(last_half)
 
-	if next_footnote_deetz != None:
+	if next_footnote_deetz is not None:
 		next_footnote_deetz['new_number'] = next_footnote_deetz['number']
 		next_footnote_deetz['reference_number_after_incrementing'] = next_footnote_deetz['number'] + 1
 		return next_footnote_deetz
@@ -94,7 +94,7 @@ def get_last_footnote(string):
 
 def get_first_footnote(string):
 	match = footnote_marker_regex.search(string)
-	return None if match == None else make_footnote_deetz_from_match(match, BEGINNING)
+	return None if match is None else make_footnote_deetz_from_match(match, BEGINNING)
 
 
 def increment_footnotes_gte(string, number):
@@ -127,7 +127,7 @@ def get_new_footnote_body_position(string, previous_footnote_id, position):
 	footnote_body_regex = re.compile(r'\[\^' + re.escape(previous_footnote_id) + r'\]:.*\n(:?(?:[ \t]+.*\n)|\n)+')
 	match = re.search(footnote_body_regex, string)
 
-	if (match == None):
+	if (match is None):
 		return len(string)
 	
 	return match.end() if position == END else match.start()
