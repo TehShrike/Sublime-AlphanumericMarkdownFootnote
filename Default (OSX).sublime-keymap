@@ -1,5 +1,5 @@
 [
     {
-        "keys": ["ctrl+f"], "command": "insert_better_markdown_footnote"
+        "keys": ["ctrl+f"], "command": "insert_alphanumeric_markdown_footnote"
     }
 ]
