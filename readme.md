@@ -2,6 +2,10 @@
 
 A Sublime Text 3 plugin.
 
+When a shortcut is pressed, inserts footnotes where the cursor is.
+
+If the cursor is inside a footnote, you can hit a different shortcut to go back to where the footnote marker is in the document.
+
 Similar to [MarkdownFootnotes](https://github.com/classicist/MarkdownFootnotes), having these shared features:
 
 - Adds a footnote label to the cursor position and a corresponding footnote entry to the bottom of the file.
@@ -43,8 +47,16 @@ with the cursor on the footnote line immediately after `[^chapter1-1]: `.
 
 ## Keybinding
 
+### Insert footnote
+
 - ctrl+f: Insert Footnote (OS X)
-- ctrl+alt+super+f: Insert Footnote (Linux, Windows)
+- ctrl+alt+f: Insert Footnote (Linux, Windows)
+
+### Move to footnote
+
+- ctrl+alt+f: Insert Footnote (OS X)
+- ctrl+alt+shift+f: Insert Footnote (Linux, Windows)
+
 
 ## License
 
