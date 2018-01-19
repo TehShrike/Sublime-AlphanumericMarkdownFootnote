@@ -1,6 +1,6 @@
 [
     {
         "keys": ["ctrl+alt+f"], "command": "insert_alphanumeric_markdown_footnote",
-        "keys": ["ctrl+shift+alt+f"], "command": "move_to_footnote_marker"
+        "keys": ["ctrl+alt+super+f"], "command": "move_to_footnote_marker"
     }
 ]

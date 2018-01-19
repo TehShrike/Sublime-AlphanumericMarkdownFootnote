@@ -18,6 +18,7 @@ It differs from MarkdownFootnotes by:
 - ignoring your currently selected text when creating the footnote
 - not bothering to validate all of your footnotes
 - when footnote ids end with a number, use that prefix for the new footnote, but adjust all the numbers to line up
+- having a "go back to the footnote marker" shortcut
 - less code
 - tests
 
@@ -49,13 +50,13 @@ with the cursor on the footnote line immediately after `[^chapter1-1]: `.
 
 ### Insert footnote
 
-- ctrl+f: Insert Footnote (OS X)
-- ctrl+alt+f: Insert Footnote (Linux, Windows)
+- ctrl+f (OS X)
+- ctrl+alt+f (Linux, Windows)
 
 ### Move to footnote
 
-- ctrl+alt+f: Insert Footnote (OS X)
-- ctrl+alt+shift+f: Insert Footnote (Linux, Windows)
+- ctrl+alt+f (OS X)
+- ctrl+alt+super+f (Linux, Windows)
 
 
 ## License
