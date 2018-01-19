@@ -1,4 +1,4 @@
-from FootnoteFunctions import insert_footnote, find_enclosing_footnote_id, find_footnote_marker_position
+from FootnoteFunctions import insert_footnote, find_enclosing_footnote_id, find_footnote_marker_position, get_footnote_marker_id_at_position, get_footnote_body_position
 
 def assert_equal(actual, expected):
 	if expected != actual:
@@ -25,11 +25,11 @@ wat
 
 """
 
-def output(result):
-	body = result['body']
-	cursor = result['cursor']
+# def output(result):
+# 	body = result['body']
+# 	cursor = result['cursor']
 
-	print(body[:cursor] + 'CURSOR' + body[cursor:])
+# 	print(body[:cursor] + 'CURSOR' + body[cursor:])
 
 # output(insert_footnote(test_string, 34))
 # output(insert_footnote(test_string, 54))
@@ -50,6 +50,16 @@ assert_equal(find_footnote_marker_position(test_string, 'nothing'), None)
 assert_equal(find_footnote_marker_position(test_string, 'ch1-1'), 29)
 assert_equal(find_footnote_marker_position(test_string, 'chb2'), 49)
 
+assert_equal(get_footnote_marker_id_at_position(test_string, 21), None)
+assert_equal(get_footnote_marker_id_at_position(test_string, 22), 'ch1-1')
+assert_equal(get_footnote_marker_id_at_position(test_string, 23), 'ch1-1')
+assert_equal(get_footnote_marker_id_at_position(test_string, 24), 'ch1-1')
+assert_equal(get_footnote_marker_id_at_position(test_string, 29), 'ch1-1')
+assert_equal(get_footnote_marker_id_at_position(test_string, 72), None)
+
+assert_equal(get_footnote_body_position(test_string, 'ch1-1'), 76)
+assert_equal(get_footnote_body_position(test_string, 'chb2'), 110)
+assert_equal(get_footnote_body_position(test_string, 'wat'), None)
 
 
 assert_equal(insert_footnote('what do you mean', 4)['body'], """what[^1] do you mean

@@ -142,9 +142,7 @@ def footnote_brackets(footnote_id):
 
 def find_enclosing_footnote_id(string, position):
 	start = string[:position] + get_first_line(string[position:])
-	# print('checking |' + start + '\n\n|')
 	regex = get_footnote_body_regex_string(r'([^\]]*?)') + r'$'
-	# print(regex)
 	match = re.search(regex, start + '\n\n')
 
 	if (match is None):
@@ -152,12 +150,6 @@ def find_enclosing_footnote_id(string, position):
 
 	return match.group(1)
 
-	# this_footnote_marker_regex = re.compile(r'[^\n]' + footnote_brackets(footnote_id))
-
-	# marker_matches = re.findall(this_footnote_marker_regex, string)
-
-	# if (len(marker_matches) == 0)
-	# 	return None
 
 def find_footnote_marker_position(string, footnote_id):
 	regex = re.escape(footnote_brackets(footnote_id))
@@ -168,3 +160,36 @@ def find_footnote_marker_position(string, footnote_id):
 
 def get_first_line(string):
 	return string.split('\n', 1)[0]
+
+
+
+left_half_footnote_id_regex = re.compile(r'[^\n]\[\^([^\]]*)(\]?)$')
+right_half_footnote_id_regex = re.compile(r'^([^\]]*)\]')
+def get_footnote_marker_id_at_position(string, position):
+	if (string[position - 1] == '[' and string[position] == '^'):
+		return get_footnote_marker_id_at_position(string, position + 1)
+
+	left_footnote_id_match = re.search(left_half_footnote_id_regex, string[:position])
+
+	if (left_footnote_id_match is None):
+		return None
+	elif (len(left_footnote_id_match.group(2)) == 1):
+		return left_footnote_id_match.group(1)
+
+	right_footnote_id_match = re.search(right_half_footnote_id_regex, string[position:])
+
+	if (right_footnote_id_match is None):
+		return None
+
+	return left_footnote_id_match.group(1) + right_footnote_id_match.group(1)
+
+def get_footnote_body_position(string, footnote_id):
+	regex = get_footnote_body_regex_string(r'(' + footnote_id + r')')
+	match = re.search(regex, string)
+
+	if (match is None):
+		return None
+
+	after_footnote_id = match.end(1)
+
+	return after_footnote_id + 2

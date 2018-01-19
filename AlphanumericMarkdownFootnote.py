@@ -1,7 +1,7 @@
 import sublime
 import sublime_plugin
 
-from .FootnoteFunctions import insert_footnote, find_enclosing_footnote_id, find_footnote_marker_position
+from .FootnoteFunctions import insert_footnote, find_enclosing_footnote_id, find_footnote_marker_position, get_footnote_marker_id_at_position, get_footnote_body_position
 
 class InsertAlphanumericMarkdownFootnoteCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -37,6 +37,12 @@ class MoveToFootnoteMarkerCommand(sublime_plugin.TextCommand):
 
 			if (footnote_marker_position is not None):
 				set_cursor_position(self, selection, footnote_marker_position)
+		else:
+			footnote_marker_id_under_cursor = get_footnote_marker_id_at_position(buffer_contents, cursor_position)
+			if (footnote_marker_id_under_cursor is not None):
+				new_position = get_footnote_body_position(buffer_contents, footnote_marker_id_under_cursor)
+				set_cursor_position(self, selection, new_position)
+
 
 def set_cursor_position(self, selection, position):
 	new_cursor_region = sublime.Region(position, position)
