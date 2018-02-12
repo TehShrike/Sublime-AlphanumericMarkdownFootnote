@@ -119,7 +119,7 @@ def increment_footnotes_gte(string, number):
 	return string
 
 def get_footnote_body_regex_string(identifier_position_regex):
-	return r'\[\^' + identifier_position_regex + r'\]:.*\n(?:(?:[ \t]+.*\n)|\n)+'
+	return r'\[\^' + identifier_position_regex + r'\]:.*\n(?:(?:[ \t].*\n)|\n)+'
 
 def get_new_footnote_body_position(string, previous_footnote_id, position):
 	footnote_body_regex = re.compile(get_footnote_body_regex_string(re.escape(previous_footnote_id)))
