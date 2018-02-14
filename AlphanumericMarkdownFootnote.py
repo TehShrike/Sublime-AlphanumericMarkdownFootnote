@@ -41,7 +41,8 @@ class MoveToFootnoteMarkerCommand(sublime_plugin.TextCommand):
 			footnote_marker_id_under_cursor = get_footnote_marker_id_at_position(buffer_contents, cursor_position)
 			if (footnote_marker_id_under_cursor is not None):
 				new_position = get_footnote_body_position(buffer_contents, footnote_marker_id_under_cursor)
-				set_cursor_position(self, selection, new_position)
+				if (new_position is not None):
+					set_cursor_position(self, selection, new_position)
 
 
 def set_cursor_position(self, selection, position):
