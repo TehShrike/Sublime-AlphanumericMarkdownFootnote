@@ -58,6 +58,11 @@ with the cursor on the footnote line immediately after `[^chapter1-1]: `.
 - ctrl+alt+f (OS X)
 - ctrl+alt+super+f (Linux, Windows)
 
+## To run tests
+
+```sh
+python3 test.py
+```
 
 ## License
 
