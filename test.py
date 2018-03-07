@@ -175,6 +175,103 @@ assert_equal(insert_footnote(test_string_2, 11)['body'], """
 
 """)
 
+test_string_with_unordered_footnotes = """
+some text[^01-1]
+some more text[^01-2]
+hmmmm ok then[^01-3]
+
+[^01-2]: original first
+
+[^01-1]: original second
+
+[^01-3]: original third
+"""
+
+assert_equal(insert_footnote(test_string_with_unordered_footnotes, 27)['body'], """
+some text[^01-1]
+some more[^01-2] text[^01-3]
+hmmmm ok then[^01-4]
+
+[^01-3]: original first
+
+[^01-1]: original second
+
+[^01-2]: 
+
+[^01-4]: original third
+""")
+
+
+test_string_with_unordered_footnote_ids = """
+some text[^01-3]
+some more text[^01-1]
+hmmmm ok then[^01-2]
+
+[^01-2]: original first
+
+[^01-1]: original second
+
+[^01-3]: original third
+"""
+
+assert_equal(insert_footnote(test_string_with_unordered_footnote_ids, 45)['body'], """
+some text[^01-4]
+some more text[^01-1]
+hmmmm[^01-2] ok then[^01-3]
+
+[^01-3]: original first
+
+[^01-1]: original second
+
+[^01-2]: 
+
+[^01-4]: original third
+""")
+
+
+test_string_with_unordered_footnote_ids_2 = """
+some text[^01-3]
+some more text[^01-1]
+hmmmm ok then[^01-2]
+
+[^01-3]: original first
+
+[^01-1]: original second
+
+[^01-2]: original third
+"""
+
+assert_equal(insert_footnote(test_string_with_unordered_footnote_ids_2, 45)['body'], """
+some text[^01-4]
+some more text[^01-1]
+hmmmm[^01-2] ok then[^01-3]
+
+[^01-4]: original first
+
+[^01-1]: original second
+
+[^01-2]: 
+
+[^01-3]: original third
+""")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 test_file = """
 {pagebreak}
 
