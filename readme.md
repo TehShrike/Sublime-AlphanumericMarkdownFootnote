@@ -24,8 +24,8 @@ It differs from MarkdownFootnotes by:
 
 ## Example
 
-```
-This is a test paragraph
+```bat
+This is a test paragraph|
 
 And here is another[^chapter1-1]
 
@@ -34,12 +34,12 @@ And here is another[^chapter1-1]
 
 With the cursor at the end of the first line, hitting the shortcut produces this:
 
-```
+```bat
 This is a test paragraph[^chapter1-1]
 
 And here is another[^chapter1-2]
 
-[^chapter1-1]: 
+[^chapter1-1]: |
 
 [^chapter1-2]: Totally a footnote
 ```
