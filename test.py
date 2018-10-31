@@ -1,4 +1,4 @@
-from .FootnoteFunctions import insert_footnote, find_enclosing_footnote_id, find_footnote_marker_position, get_footnote_marker_id_at_position, get_footnote_body_position
+from FootnoteFunctions import insert_footnote, find_enclosing_footnote_id, find_footnote_marker_position, get_footnote_marker_id_at_position, get_footnote_body_position
 
 def assert_equal(actual, expected):
 	if expected != actual:
