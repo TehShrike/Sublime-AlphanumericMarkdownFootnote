@@ -828,6 +828,22 @@ assert_equal(find_footnote_marker_position(test_file2, '0-44'), 3023)
 assert_equal(get_footnote_body_position(test_file2, '0-44'), 4193)
 
 
+# no trailing whitespace
+assert_equal(insert_footnote("""
+This is a test paragraph
+
+And here is another[^chapter1-1]
+
+[^chapter1-1]:""", 25)['body'], """
+This is a test paragraph[^chapter1-1]
+
+And here is another[^chapter1-2]
+
+[^chapter1-1]: 
+
+[^chapter1-2]:""")
+
+
 # no trailing newline
 assert_equal(insert_footnote("""
 This is a test paragraph
@@ -840,6 +856,7 @@ This is a test paragraph[^chapter1-1]
 And here is another[^chapter1-2]
 
 [^chapter1-1]: 
+
 [^chapter1-2]: Totally a footnote""")
 
 
