@@ -1,8 +1,16 @@
+from difflib import Differ
 from FootnoteFunctions import insert_footnote, find_enclosing_footnote_id, find_footnote_marker_position, get_footnote_marker_id_at_position, get_footnote_body_position
+
+def pretty_diff(actual, expected):
+	lines = Differ().compare(
+		actual.splitlines(keepends=True),
+		expected.splitlines(keepends=True)
+	)
+	return ''.join(lines)
 
 def assert_equal(actual, expected):
 	if expected != actual:
-		raise AssertionError('Expected: "' + str(expected) + '"\nbut got: "' + str(actual) + '"')
+		raise AssertionError(pretty_diff(actual, expected))
 
 test_string = """
 what's going on then[^ch1-1]
